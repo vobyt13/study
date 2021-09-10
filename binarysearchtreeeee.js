@@ -1,3 +1,6 @@
+// c++ professor harris this one's for you. thank you.
+// freecodecamp.
+
 class Node {
     constructor(item) {
         this.value = item;
