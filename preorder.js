@@ -1,5 +1,7 @@
+// freecodecamp
+// nodes traverse push
 class Node {
-    constructor() {
+    constructor(value) {
         this.value = value;
         this.left = null;
         this.right = null;
@@ -17,15 +19,15 @@ class BinarySearchTree {
         }
         var curr = this.root;
         while(curr) {
-            if(value < curr.value) {
+            if(curr.value < value) {
                 if(!curr.left) {
                     curr.left = new Node(value);
                     return undefined;
                 }
                 curr = curr.left;
-            } else if(value > curr.value) {
+            } else if(curr.value > value) {
                 if(!curr.right) {
-                    curr.left = new Node(value);
+                    curr.right = new Node(value);
                     return undefined;
                 }
                 curr = curr.right;
@@ -46,8 +48,8 @@ class BinarySearchTree {
             nodes.push(root.value);
             traverse(root.left);
             traverse(root.right);
-        }
-        traverse();
+        };
+        traverse(root);
         return nodes;
     }
     inorder(root = this.root) {
@@ -63,25 +65,23 @@ class BinarySearchTree {
             nodes.push(root.value);
             traverse(root.right);
         };
-
-        traverse();
+        traverse(root);
         return nodes;
     }
-
     postorder(root = this.root) {
         if(root === null) {
             return null;
         }
         const nodes = [];
         const traverse = (root) => {
-            if(this.root === null) {
-                return null;
+            if(root === null) {
+                return;
             }
             traverse(root.left);
             traverse(root.right);
             nodes.push(root.value);
-        }
-        traverse();
+        };
+        traverse(root);
         return nodes;
     }
 }
